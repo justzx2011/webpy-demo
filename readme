@@ -1,4 +1,6 @@
-yum install uwsgi  webpy nginx
+yum install uwsgi  webpy  
+
+https://github.com/agentzh/ngx_openresty
 
 nginx.conf添加server节点
 include /usr/local/openresty/nginx/conf/vhost/xiaofancn.conf;
