@@ -7,21 +7,27 @@ include /usr/local/openresty/nginx/conf/vhost/xiaofancn.conf;
 
 #xiaofancn.conf
 server {
-    listen       81;
-    server_name xiaofancn;
-    charset utf-8;
-    location /{
+    listen       81; 
+    server_name xiaofancn; 
+    charset utf-8; 
+    location /{#所有的请求都会被路由
+        root /home/fasnxet/gitproject/webpy-demo;
         include uwsgi_params;
         uwsgi_pass 127.0.0.1:8000;
-        uwsgi_param UWSGI_CHDIR /home/fasnxet/wwwroot/pyweb/www;#应用主目录
+        uwsgi_param UWSGI_CHDIR /home/fasnxet/gitproject/webpy-demo;
         uwsgi_param UWSGI_SCRIPT index;
-     }
+    }
+    location /static/ {#单独映射。 
+         root /home/fasnxet/gitproject/webpy-demo;
+    }
+    
+
  }
 
-#/home/fasnxet/wwwroot/pyweb/www/index.py
+#/home/fasnxet/gitproject/webpy-demo/index.py
 
 #cmd
-cd /home/fasnxet/wwwroot/pyweb/www/
+cd /home/fasnxet/gitproject/webpy-demo/
 uwsgi -s 127.0.0.1:8000 -w index
 cd /usr/local/openresty
 ./nginx/sbin/nginx
