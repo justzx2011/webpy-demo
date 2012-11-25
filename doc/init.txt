@@ -1,0 +1,23 @@
+#添加用户和组
+groupadd postgres
+useradd postgres -g postgres
+
+#下载源码，并且压缩
+wget http://ftp.postgresql.org/pub/source/v9.1.2/postgresql-9.1.2.tar.bz2
+tar jxvf postgresql-9.1.2.tar.bz2
+cd postgresql-9.1.2
+
+#设置postgresql安装路径
+./configure --prefix=/usr/local/pgsql --with-openssl
+
+#新建postgres主目录
+mkdir /home/postgres
+chown -R postgres:postgres /home/postgres
+cd /home/postgres
+su postgres
+mkdir data
+
+#初始化数据库
+su postgres
+initdb -D /home/postgres/data -E utf-8
+pg_ctl -D /home/postgres/data -l /home/postgres/logfile start
