@@ -1,4 +1,4 @@
-#只是玩玩
+# 只是玩玩
 yum install uwsgi  webpy  
 
 https://github.com/agentzh/ngx_openresty
@@ -6,7 +6,7 @@ https://github.com/agentzh/ngx_openresty
 nginx.conf添加server节点
 include /usr/local/openresty/nginx/conf/vhost/xiaofancn.conf;
 
-##xiaofancn.conf
+### xiaofancn.conf
 server {
     listen       81; 
     server_name xiaofancn; 
@@ -26,7 +26,7 @@ server {
  }
 
 
-##cmd
+### cmd
 cd /home/fansxnet/gitproject/webpy-demo/
 uwsgi -x uwsgi.xml &
 cd /usr/local/openresty
