@@ -11,24 +11,23 @@ server {
     server_name xiaofancn; 
     charset utf-8; 
     location /{#所有的请求都会被路由
-        root /home/fasnxet/gitproject/webpy-demo;
+        root /home/fansxnet/gitproject/webpy-demo;
         include uwsgi_params;
         uwsgi_pass 127.0.0.1:8000;
-        uwsgi_param UWSGI_CHDIR /home/fasnxet/gitproject/webpy-demo;
+        uwsgi_param UWSGI_CHDIR /home/fansxnet/gitproject/webpy-demo;
         uwsgi_param UWSGI_SCRIPT index;
     }
     location /static/ {#单独映射。 
-         root /home/fasnxet/gitproject/webpy-demo;
+         root /home/fansxnet/gitproject/webpy-demo;
     }
     
 
  }
 
-#/home/fasnxet/gitproject/webpy-demo/index.py
 
 #cmd
-cd /home/fasnxet/gitproject/webpy-demo/
-uwsgi -s 127.0.0.1:8000 -w index
+cd /home/fansxnet/gitproject/webpy-demo/
+uwsgi -x uwsgi.xml &
 cd /usr/local/openresty
 ./nginx/sbin/nginx
 
