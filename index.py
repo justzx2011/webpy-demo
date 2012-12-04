@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
 import web, os
 from mako.filters import trim
 import sys, os  
 
+
+def notfound():
+     return web.notfound('对不起Sorry, the page you were looking for was not found.')
 
 def head_loadhook():
     web.header('Content-type', "text/html; charset=utf-8")
@@ -26,6 +30,7 @@ app_dir = os.getcwd();
 modules = [(x[:-3], os.path.join(app_dir, x)) for x in os.listdir(app_dir) if x.endswith('.py')]
 urls = import_modules(modules);
 app = web.application(urls, globals(), autoreload=True)
+app.notfound = notfound
 app.add_processor(web.loadhook(head_loadhook))
 web.config.debug = True
 print '------------app run ---------------------'
