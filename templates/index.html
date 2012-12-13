@@ -1,13 +1,10 @@
-$def with (title)
-$var title: $title
-
-<h3>Hello, world</h3>
-
-
-$code:
-    x = 1
-    y = 2
-    def plusxyz(z =3 ):
-       return x + y + z
-
-$plusxyz(4)
+$def with (content)
+<!DOCTYPE html><html  id="customDoc">
+	<head> 
+	<meta http-equiv=Content-Type content="text/html; charset=utf-8"> 
+	<title> jinja2模板include子模板的一个小细节。_卡门_百度空间</title>
+	</head>
+<body>
+	{% include 'script.html' %} 
+</body>
+</html>

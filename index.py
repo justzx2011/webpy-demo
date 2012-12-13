@@ -2,8 +2,6 @@
 import web, os
 from mako.filters import trim
 import sys, os  
-
-
 def notfound():
      return web.notfound('对不起Sorry, the page you were looking for was not found.')
 
@@ -34,6 +32,7 @@ app.notfound = notfound
 app.add_processor(web.loadhook(head_loadhook))
 web.config.debug = True
 print '------------app run ---------------------'
+print dir()
 print urls;
 print modules;
 application = app.wsgifunc()
